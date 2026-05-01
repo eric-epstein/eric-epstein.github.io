@@ -1,2 +1,0 @@
-# tectraenergy.github.io
-webpages
