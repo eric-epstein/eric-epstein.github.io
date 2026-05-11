@@ -11,56 +11,31 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy-deep:   #010d1d;
-      --navy-mid:    #0a1e35;
-      --navy-light:  #0f2a47;
-      --gold:        #c8883a;
-      --gold-light:  #e8a84a;
-      --gold-glow:   rgba(200, 136, 58, 0.25);
-      --cream:       #f0e8d8;
-      --white:       #ffffff;
-      --text-dim:    rgba(240, 232, 216, 0.6);
+      --gold:     #c8883a;
+      --cream:    #f0e8d8;
+      --text-dim: rgba(240, 232, 216, 0.55);
     }
 
     html, body {
       width: 100%;
       min-height: 100vh;
-      background: var(--navy-deep);
+      background: #0b1929;
       color: var(--cream);
       font-family: 'Outfit', sans-serif;
       overflow-x: hidden;
     }
 
-    /* ── Background: use the original slide image as the page background ── */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background-image: url('landingpage.png');
+      background-image: url('background.png');
       background-size: cover;
-      background-position: left center;
+      background-position: center center;
       background-repeat: no-repeat;
-      pointer-events: none;
       z-index: 0;
     }
 
-    /* Subtle animated wave lines mimicking the slide */
-    .wave-bg {
-      position: absolute;
-      top: 0; left: 0;
-      width: 55%;
-      height: 100%;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .wave-bg svg {
-      width: 100%;
-      height: 100%;
-      opacity: 0.18;
-    }
-
-    /* ── Layout ── */
     .page {
       position: relative;
       z-index: 1;
@@ -69,12 +44,8 @@
       flex-direction: column;
     }
 
-    /* ── Header / Nav ── */
     header {
       padding: 2rem 3rem 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
     }
 
     .logo {
@@ -85,37 +56,27 @@
       color: var(--cream);
       line-height: 1;
     }
-    .logo em {
-      font-style: italic;
-      font-weight: 400;
-      color: var(--cream);
-    }
+    .logo em { font-style: italic; }
 
-    /* ── Hero ── */
     .hero {
       flex: 1;
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
-      gap: 2rem;
       padding: 3rem 3rem 2rem;
       min-height: 70vh;
     }
 
     .hero-text {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
       animation: fadeUp 0.9s ease both;
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(28px); }
+      from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
     .hero-headline {
-      font-family: 'Outfit', sans-serif;
       font-weight: 800;
       font-size: clamp(2.8rem, 6vw, 5.5rem);
       line-height: 1.05;
@@ -123,26 +84,6 @@
       letter-spacing: -0.02em;
     }
 
-    /* ── Hero image ── */
-    .hero-image {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: fadeUp 0.9s 0.2s ease both;
-    }
-
-    .hero-image-crop {
-      width: 100%;
-      max-width: 520px;
-    }
-
-    .hero-image-crop img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* ── Feature strip ── */
     .features {
       border-top: 1px solid rgba(200, 136, 58, 0.2);
       padding: 1.8rem 3rem;
@@ -150,7 +91,7 @@
       gap: 1rem;
       align-items: stretch;
       flex-wrap: wrap;
-      animation: fadeUp 0.9s 0.4s ease both;
+      animation: fadeUp 0.9s 0.3s ease both;
     }
 
     .feature {
@@ -159,12 +100,11 @@
       gap: 1rem;
       flex: 1;
       min-width: 200px;
-      padding: 0.5rem 1rem 0.5rem 0;
+      padding: 0.5rem 2rem 0.5rem 0;
     }
 
     .feature:not(:last-child) {
       border-right: 1px solid rgba(200, 136, 58, 0.15);
-      padding-right: 2rem;
     }
 
     .feature-icon {
@@ -176,7 +116,6 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      color: var(--gold);
     }
 
     .feature-icon svg {
@@ -196,7 +135,6 @@
       line-height: 1.3;
     }
 
-    /* ── Footer note ── */
     .footer-note {
       text-align: center;
       padding: 1rem 3rem 1.5rem;
@@ -207,38 +145,32 @@
       animation: fadeUp 0.9s 0.5s ease both;
     }
 
-    /* ── MOBILE ── */
     @media (max-width: 700px) {
       header { padding: 1.5rem 1.5rem 0; }
 
       .hero {
         grid-template-columns: 1fr;
-        grid-template-rows: auto auto;
         padding: 2rem 1.5rem 1.5rem;
         min-height: unset;
-        gap: 1.5rem;
       }
 
-      .hero-image {
-        order: -1; /* image on top on mobile */
+      .hero-text {
+        background: rgba(5, 15, 30, 0.5);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border-radius: 1rem;
+        padding: 1.5rem;
       }
 
-      .hero-image-crop {
-        border-radius: 0.75rem;
-        max-width: 100%;
-      }
-
-      .hero-headline {
-        font-size: clamp(2.4rem, 11vw, 3.5rem);
-        text-align: center;
-      }
-
-      .hero-text { align-items: center; }
+      .hero-headline { font-size: clamp(2.4rem, 11vw, 3.5rem); }
 
       .features {
         padding: 1.5rem;
         flex-direction: column;
         gap: 1.2rem;
+        background: rgba(5, 15, 30, 0.5);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
       }
 
       .feature:not(:last-child) {
@@ -253,15 +185,13 @@
 
     @media (min-width: 701px) and (max-width: 1024px) {
       header { padding: 1.8rem 2rem 0; }
-      .hero { padding: 2rem 2rem 1.5rem; gap: 1.5rem; }
+      .hero { padding: 2rem 2rem 1.5rem; }
       .features { padding: 1.5rem 2rem; }
     }
   </style>
 </head>
 <body>
 <div class="page">
-
-
 
   <header>
     <div class="logo">Tectra <em>Energy</em></div>
@@ -271,32 +201,23 @@
     <div class="hero-text">
       <h1 class="hero-headline">More energy,<br>by design</h1>
     </div>
-    <div class="hero-image">
-      <!-- Crop wrapper: shows only the right ~55% of the slide (the battery render) -->
-      <div class="hero-image-crop">
-        <img src="landingpage2.png" alt="Tectra battery architecture render">
-      </div>
-    </div>
   </section>
 
   <div class="features">
     <div class="feature">
       <div class="feature-icon">
-        <!-- Lightning bolt -->
         <svg viewBox="0 0 24 24"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
       </div>
       <span class="feature-label">New battery architecture</span>
     </div>
     <div class="feature">
       <div class="feature-icon">
-        <!-- Layers / scale -->
         <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
       </div>
       <span class="feature-label">Designed for scale</span>
     </div>
     <div class="feature">
       <div class="feature-icon">
-        <!-- Shield check -->
         <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
       </div>
       <span class="feature-label">Built with safe &amp; abundant materials</span>
