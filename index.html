@@ -133,15 +133,16 @@
     .hero-image-crop {
       width: 100%;
       max-width: 520px;
-      border-radius: 1.25rem;
-      overflow: hidden;
-      filter: drop-shadow(0 0 50px rgba(200, 136, 58, 0.2));
+      position: relative;
     }
 
     .hero-image-crop img {
       width: 100%;
       height: auto;
       display: block;
+      /* Fade all edges into the page background color */
+      -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 55%, black 50%, transparent 100%);
+      mask-image: radial-gradient(ellipse 85% 85% at 50% 55%, black 50%, transparent 100%);
     }
 
     /* ── Feature strip ── */
