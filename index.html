@@ -31,14 +31,15 @@
       overflow-x: hidden;
     }
 
-    /* ── Background atmosphere ── */
+    /* ── Background: use the original slide image as the page background ── */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background:
-        radial-gradient(ellipse 60% 50% at 10% 40%, rgba(10, 40, 80, 0.8) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 80% 60%, rgba(15, 30, 55, 0.6) 0%, transparent 70%);
+      background-image: url('landingpage.png');
+      background-size: cover;
+      background-position: left center;
+      background-repeat: no-repeat;
       pointer-events: none;
       z-index: 0;
     }
@@ -260,29 +261,7 @@
 <body>
 <div class="page">
 
-  <!-- Animated wave background (replicates the slide's particle wave) -->
-  <div class="wave-bg">
-    <svg viewBox="0 0 600 700" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <style>
-          .wave { fill: none; stroke: #3a7bd5; stroke-width: 1; opacity: 0; animation: waveIn 2s ease forwards; }
-          .wave:nth-child(1) { animation-delay: 0.1s; }
-          .wave:nth-child(2) { animation-delay: 0.3s; }
-          .wave:nth-child(3) { animation-delay: 0.5s; }
-          .wave:nth-child(4) { animation-delay: 0.7s; }
-          .wave:nth-child(5) { animation-delay: 0.9s; }
-          .wave:nth-child(6) { animation-delay: 1.1s; }
-          @keyframes waveIn { to { opacity: 1; } }
-        </style>
-      </defs>
-      <path class="wave" d="M-50,200 Q150,100 300,280 T650,200"/>
-      <path class="wave" d="M-50,240 Q120,140 280,320 T650,240"/>
-      <path class="wave" d="M-50,280 Q100,180 260,360 T650,280" stroke-width="1.5"/>
-      <path class="wave" d="M-50,320 Q80,220 240,400 T650,320" stroke-width="2" stroke="#4a8be5"/>
-      <path class="wave" d="M-50,360 Q60,260 220,440 T650,360"/>
-      <path class="wave" d="M-50,400 Q40,300 200,480 T650,400"/>
-    </svg>
-  </div>
+
 
   <header>
     <div class="logo">Tectra <em>Energy</em></div>
