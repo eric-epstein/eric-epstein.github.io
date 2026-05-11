@@ -11,7 +11,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy-deep:   #06111f;
+      --navy-deep:   #010d1d;
       --navy-mid:    #0a1e35;
       --navy-light:  #0f2a47;
       --gold:        #c8883a;
@@ -133,16 +133,12 @@
     .hero-image-crop {
       width: 100%;
       max-width: 520px;
-      position: relative;
     }
 
     .hero-image-crop img {
       width: 100%;
       height: auto;
       display: block;
-      /* Fade all edges into the page background color */
-      -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 55%, black 50%, transparent 100%);
-      mask-image: radial-gradient(ellipse 85% 85% at 50% 55%, black 50%, transparent 100%);
     }
 
     /* ── Feature strip ── */
